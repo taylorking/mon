@@ -1,5 +1,5 @@
 var AlexaSkill = require('./AlexaSkill.js');
-var APP_ID = 'dont put this in version control';
+var APP_ID = "don't put this in version control"';
 var Monero = require('./Monero.js');
 
 var Mon = function() {
@@ -8,6 +8,11 @@ var Mon = function() {
 Mon.prototype = Object.create(AlexaSkill.prototype);
 Mon.prototype.constructor = Mon;
 
+Mon.prototype.eventHandlers.onLaunch = function(launchRequest, session, response) {
+    Monero.getString().then(function(str) {
+        response.tell("The price of monero is: " + str)
+    });
+};
 
 Mon.prototype.intentHandlers = { 
       "GetMoneroPrice": function (intent, session, response) {
@@ -21,5 +26,6 @@ exports.handler = function (event, context) {
       var app = new Mon();
             app.execute(event, context);
 }
+
 
 
