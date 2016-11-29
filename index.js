@@ -1,5 +1,5 @@
 var AlexaSkill = require('./AlexaSkill.js');
-var APP_ID = "don't put this in version control"';
+var APP_ID = "don't put this in version control";
 var Monero = require('./Monero.js');
 
 var Mon = function() {
